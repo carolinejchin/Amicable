@@ -1,0 +1,74 @@
+<html>
+    <script src="amicable.js"></script>
+
+    <head>
+        <title>Amicable Numbers</title>
+    </head> 
+
+    <script>
+        
+        function isAFactor (num, factor) {
+            if (num % factor == 0) {
+                return true;
+            }
+        }
+        
+        function runFunction () {
+            
+            var fnumber = document.getElementById('fnumber').value;
+            var lnumber = document.getElementById('lnumber').value;
+            alert("The first number:" + fnumber + " Second number: " + lnumber);
+            
+            var first_array = [];
+            for (i = 0; i < fnumber; i++) {
+                if(isAFactor(fnumber, i) == true) {
+                    first_array.push(i);
+                }
+            }
+            
+            alert("Factors of first number: " + first_array.join("\n"));
+            
+            var first_sum = 0;
+            for (i = 0; i < first_array.length; i++) {
+                first_sum += first_array[i];
+            }
+            
+            var second_array = [];
+            for (i = 0; i < lnumber; i++) {
+                if(isAFactor(lnumber, i) == true) {
+                    second_array.push(i);
+                }
+            }
+            
+            alert("Factors of second number: " + second_array.join("\n"));
+            
+            var second_sum = 0;
+            for (i = 0; i < second_array.length; i++) {
+                second_sum += second_array[i];
+            }
+            
+            if (first_sum == lnumber && second_sum == fnumber) {
+                document.getElementById('amicable').innerHTML = ("The numbers: " + fnumber + " and " + lnumber + " are amicable");
+            }
+            else {
+                document.writeln("The numbers: " + fnumber + " and " + lnumber + " are not amicable");
+            }
+        }
+    </script>
+
+    <body>
+        <h1> Amicable Numbers</h1>
+        <form>
+            <label for="First number">First number:</label>
+            <input type="number" id="fnumber" number="fnumber"><br><br>
+            <label for="lname">Last Number:</label>
+            <input type="number" id="lnumber" number="lnumber"><br><br>
+            <input type="button" onclick="runFunction()" value="Submit">
+        </form>
+        
+        <div id="amicable">
+            
+        </div>
+        
+    </body>
+</html>
